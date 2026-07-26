@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>canvas</title>
         <link rel="icon" href="image/photo_2026-06-07_20-41-39.jpg">
         <style>
                 h1{
                     font-style: italic;
-                    font-size: 100px;
+                    font-size: clamp(40px,8vw,100px);
                     color: rgb(93, 20, 20);
                 }
                 p{
                     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
                     color: rgb(53, 1, 1);
-                    font-size: 20px;
+                    font-size: clamp(16px,3vw,20px);
+                    width:90%;
+                    max-width:900px;
+                    margin:auto;
                 }
                 body{
     margin:0;
-    height:100vh;
+    min-height:100vh;
     display:flex;
+    flex-direction:column;
     justify-content:center;
     align-items:center;
     font-family:'Georgia', serif;
@@ -110,6 +115,23 @@ button:hover{
 }
 button{
     font-size: larger;
+}
+@media (max-width:768px){
+
+h1{
+    font-size:50px;
+}
+
+.envelope{
+    width:250px;
+    height:170px;
+}
+
+button{
+    width:170px;
+    font-size:16px;
+}
+
 }
 
 
