@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>canvas</title>
+        <link rel="icon" href="image/photo_2026-06-07_20-41-39.jpg">
+    <style>
+    h1{
+                    font-style: italic;
+                    font-size: 80px;
+                    color: rgb(53, 1, 1);
+                }
+                form{
+                    font-style: italic;
+                    color: rgb(53, 1, 1);
+                }
+                button{
+   
+    margin-top: 25px;
+    margin-left: 68%;
+    display: inline-block;
+    width: 300px;
+    height: 80px;
+    cursor:pointer;
+    font-style: italic;
+    background-color:#efe6d7;
+    color:#4a3b2a;
+    font-size: 30px;
+
+}
+button:hover{
+    background-color:white;
+    color:black;
+}
+table{
+    font-size: 50px;
+}
+input{
+    padding: 30px;
+    margin-top: 20px;
+    display: inline-block;
+    width: 750px;
+    height: 10px;
+    cursor:pointer;
+    font-style: italic;
+    font-size: 40px;
+    padding-right: 40px;
+    
+    
+
+}
+#id1{
+     
+    width: 220px;
+    margin-left: 52%;
+    margin-top: 15px;
+    cursor:pointer;
+    font-style: italic;
+}
+select{
+    width: 100%;
+    height: 70px;
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 40px;
+    font-style: italic;
+    cursor: pointer;
+    
+    
+    
+}
+
+option{
+    padding: 30px;
+    margin-top: 20px;
+    display: inline-block;
+    width: 750px;
+    height: 10px;
+    cursor:pointer;
+    font-style: italic;
+    font-size: 40px;
+    padding-right: 40px;
+    
+}
+#cl1{
+    padding: 30px;
+    margin-top: 20px;
+    display: inline-block;
+    width: 750px;
+    height: 10px;
+    cursor:pointer;
+    font-style: italic;
+    font-size: 40px;
+    padding-right: 40px;
+
+}
+
+
+
+
+</style>
+    </head>
+    <body style="
+background:url('image/pic3.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+">
+        <center>
+            <h1>Custom Order</h1>
+        <form id="orderForm">
+            <table>
+                <tr>
+                    <td>Full Name</td>
+                    <td><input type="text" name="name" placeholder="Enter your Full Name"></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="email" name="email" placeholder="Enter your Email"> </td>
+                </tr>
+                <tr>
+                    <td >Occasion </td>
+                    <td >
+                        <select id="cl2" name="ordertype">
+    <option value="" selected disabled>Select Occasion</option>
+    <option value="birthday">Birthday</option>
+    <option value="anniversary">Anniversary</option>
+    <option value="friendship">Friendship</option>
+    <option value="love">Vintage Love Letter</option>
+    <option value="other">Others</option>
+</select>
+                    </td>
+                    <tr>
+                    <td>Which type of letter you want?</td>
+                    <td><input type="text" name="lettertype" placeholder="Type of Letter"></td>
+                </tr>
+                </tr>
+                <tr>
+                    <td>Special Quote / Message</td>
+                    <td><textarea id="cl1" name="message" placeholder="Enter the message you want to include in the card..." style="height:80px; "id="id1"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Preferred Colour</td>
+                    <td><input type="text" name="colour" placeholder="Colour"></td>
+                </tr>
+                
+                                <tr>
+                    <td>Phone Number</td>
+                    <td><input type="number"name="phone" placeholder="Enter your Phone Number"></td>
+                </tr>
+                <tr>
+                    <td>Required Date</td>
+                    <td><input type="date" name="date"></td>
+            </table>
+            <button type="submit">Place Your Order</button>
+        </form>    
+        </center>
+        <script>
+
+const scriptURL =
+"https://script.google.com/macros/s/AKfycbyNTF-glMg-5V8qvJ7VWFRJrjAFQ8f_vT2vqYG33rqVrYA4EgR7b7MZYRanrXRkXV8Fog/exec";
+
+const form=document.getElementById("orderForm")
+form.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const formData = {
+        name: this.name.value,
+        email: this.email.value,
+        ordertype: this.ordertype.value,
+        lettertype: this.lettertype.value,
+        message: this.message.value,
+        colour: this.colour.value,
+        phone: this.phone.value,
+        date: this.date.value
+    };
+
+    fetch(scriptURL,{
+        method:"POST",
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        alert("Order Submitted Successfully!");
+
+        window.location.href = "page4.html";
+
+    })
+    .catch(error => {
+
+        alert("Error submitting form");
+
+        console.error(error);
+
+    });
+
+});
+
+</script>
+    </body>
+</html>

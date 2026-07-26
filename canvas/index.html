@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>canvas</title>
+        <link rel="icon" href="image/photo_2026-06-07_20-41-39.jpg">
+        <style>
+                h1{
+                    font-style: italic;
+                    font-size: 100px;
+                    color: rgb(93, 20, 20);
+                }
+                p{
+                    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                    color: rgb(53, 1, 1);
+                    font-size: 20px;
+                }
+                body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Georgia', serif;
+}
+
+.envelope{
+    position:relative;
+    width:320px;
+    height:220px;
+    cursor:pointer;
+    margin-top:80px;
+    perspective: 1000px;
+}
+
+.letter{
+    position:absolute;
+    width:280px;
+    height:180px;
+    background:#fffaf0;
+    left:20px;
+    bottom:10px;
+    padding:15px;
+    box-sizing:border-box;
+    border:1px solid #d2b48c;
+    z-index:1;
+    transition:all 0.8s ease;
+}
+
+.letter h3{
+    margin-top:0;
+    color:rgb(93, 20, 20);
+}
+
+.letter p{
+    font-size:14px;
+    color:rgb(93, 20, 20);
+}
+
+.front{
+    position:absolute;
+    width:0;
+    height:0;
+    border-left:160px solid #d8b98a;
+    border-right:160px solid #d8b98a;
+    border-top:110px solid transparent;
+    border-bottom:110px solid #c8a97e;
+    bottom:0;
+    z-index:3;
+}
+
+.flap{
+    position:absolute;
+    top:0;
+    left:0;
+    width:0;
+    height:0;
+
+    border-left:160px solid transparent;
+    border-right:160px solid transparent;
+    border-top:110px solid #b88a5a;
+
+    transform-origin:top;
+    transition:transform 0.8s ease;
+    z-index:4;
+}
+
+.envelope:hover .flap{
+    transform:rotateX(180deg);
+    z-index:1;
+}
+.envelope:hover .letter{
+    transform:translateY(-100px);
+    z-index: 10;
+}
+button{
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    cursor:pointer;
+    font-style: italic;
+    background-color:#efe6d7;
+    color:rgb(53, 1, 1);
+
+}
+button:hover{
+    background-color:white;
+    color:black;
+}
+button{
+    font-size: larger;
+}
+
+
+                
+            </style>
+    </head>
+    <body style="
+background:url('image/pic1.jpg');
+background-size:cover;
+background-repeat:no-repeat;
+background-position:center;
+">
+        <center>
+            <h1>Canvas_Within</h1>
+            <p>Hi, I'm Asha, the artist behind every handcrafted vintage letter and personalized card. Inspired by timeless elegance, I create meaningful keepsakes that transform your emotions and memories into beautifully handcrafted treasures. Making your special moments truly unforgettable.</p>
+        
+        <div class="envelope">
+    <div class="letter">
+        <h3>Dear Visitor,</h3>
+        <p>
+            Welcome to Canvas_Within, a world of vintage letters, handmade cards, and timeless memories.
+        </p>
+    </div>
+
+    <div class="flap"></div>
+    <div class="front"></div>
+</div>
+<br>
+<button onclick="location.href='page1.html'">Explore My Creation</button>
+</center>
+
+    </body>
+
+</html>
