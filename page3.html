@@ -2,234 +2,414 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canvas</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            margin: 0;
-            font-family: Georgia, serif;
-            background:
-                linear-gradient(rgba(248, 245, 239, .82), rgba(248, 245, 239, .82)),
-                url("image/download.png") center/cover fixed;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
+<title>Canvas Within</title>
 
-        .card {
-            width: 100%;
-            max-width: 700px;
-            background: white;
-            padding: 30px;
-            border-radius: 18px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        h1 {
-            text-align: center;
-            color: #4b1f16;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
-        .field {
-            margin: 15px 0;
-        }
+<style>
 
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: bold;
-            color: #4b1f16;
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-        input,
-        select,
-        textarea {
-            width: 100%;
-            padding: 14px;
-            border: 1px solid #c8b9a8;
-            border-radius: 10px;
-            font-size: 16px;
-        }
+body{
 
-        textarea {
-            height: 120px;
-        }
+font-family:'Poppins',sans-serif;
 
-        button {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 10px;
-            background: #4b1f16;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-        }
+background:
+linear-gradient(rgba(250,247,242,.88),rgba(250,247,242,.88)),
+url("image/download.png") center/cover fixed;
 
-        button:hover {
-            background: #6d3728;
-        }
-    </style>
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+min-height:100vh;
+
+padding:30px;
+
+}
+
+.card{
+
+background:white;
+
+max-width:750px;
+
+width:100%;
+
+padding:40px;
+
+border-radius:20px;
+
+box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+}
+
+h1{
+
+font-family:'Playfair Display',serif;
+
+text-align:center;
+
+color:#5B2B20;
+
+font-size:45px;
+
+margin-bottom:10px;
+
+}
+
+.subtitle{
+
+text-align:center;
+
+font-size:16px;
+
+color:#6b5a4d;
+
+line-height:1.8;
+
+margin-bottom:35px;
+
+}
+
+.field{
+
+margin-bottom:20px;
+
+}
+
+label{
+
+display:block;
+
+margin-bottom:8px;
+
+font-weight:600;
+
+color:#5B2B20;
+
+}
+
+input,
+select,
+textarea{
+
+width:100%;
+
+padding:14px;
+
+font-size:16px;
+
+border:1px solid #d6c6b8;
+
+border-radius:10px;
+
+font-family:'Poppins',sans-serif;
+
+transition:.3s;
+
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+
+outline:none;
+
+border-color:#5B2B20;
+
+box-shadow:0 0 10px rgba(91,43,32,.2);
+
+}
+
+textarea{
+
+height:130px;
+
+resize:vertical;
+
+}
+
+button{
+
+width:100%;
+
+padding:16px;
+
+background:#5B2B20;
+
+color:white;
+
+border:none;
+
+border-radius:40px;
+
+font-size:18px;
+
+cursor:pointer;
+
+transition:.3s;
+
+font-family:'Poppins',sans-serif;
+
+}
+
+button:hover{
+
+background:#3d1d15;
+
+transform:translateY(-3px);
+
+}
+
+button:disabled{
+
+background:#999;
+
+cursor:not-allowed;
+
+}
+
+footer{
+
+text-align:center;
+
+margin-top:30px;
+
+font-size:14px;
+
+color:#5B2B20;
+
+}
+
+</style>
+
 </head>
 
 <body>
 
-    <div class="card">
+<div class="card">
 
-        <h1>Custom Order</h1>
+<h1>Customize Your Order</h1>
 
-        <form id="orderForm">
+<p class="subtitle">
 
-            <div class="field">
-                <label>Full Name</label>
-                <input type="text" name="name" required>
-            </div>
+Share your ideas with me, and I'll create a handcrafted letter designed especially for your special occasion.
 
-            <div class="field">
-                <label>Email</label>
-                <input type="email" name="email" required>
-            </div>
+</p>
 
-            <div class="field">
-                <label>Occasion</label>
+<form id="orderForm">
 
-                <select id="occasion" name="ordertype" required>
+<div class="field">
 
-                    <option value="">Select Occasion</option>
+<label>Full Name</label>
 
-                    <option>Birthday</option>
+<input type="text" name="name" placeholder="Enter your full name" required>
 
-                    <option>Anniversary</option>
+</div>
 
-                    <option>Friendship</option>
+<div class="field">
 
-                    <option>Vintage Love Letter</option>
+<label>Email Address</label>
 
-                    <option value="Other">Other</option>
+<input type="email" name="email" placeholder="example@gmail.com" required>
 
-                </select>
+</div>
 
-            </div>
+<div class="field">
 
-            <div class="field">
+<label>Occasion</label>
 
-                <label>Letter Type (Only for Other)</label>
+<select id="occasion" name="ordertype" required>
 
-                <input
-                    type="text"
-                    id="lettertype"
-                    name="lettertype"
-                    disabled
-                    placeholder="Available only when Other is selected">
+<option value="">Select Occasion</option>
 
-            </div>
+<option>Birthday</option>
 
-            <div class="field">
+<option>Anniversary</option>
 
-                <label>Special Quote / Message</label>
+<option>Friendship</option>
 
-                <textarea name="message"></textarea>
+<option>Vintage Love Letter</option>
 
-            </div>
+<option value="Other">Other</option>
 
-            <div class="field">
+</select>
 
-                <label>Preferred Colour</label>
+</div>
 
-                <input type="text" name="colour">
+<div class="field">
 
-            </div>
+<label>Letter Type (Only for Other)</label>
 
-            <div class="field">
+<input type="text"
+id="lettertype"
+name="lettertype"
+disabled
+placeholder="Available only when Other is selected">
 
-                <label>Phone Number</label>
+</div>
 
-                <input type="tel" name="phone" required>
+<div class="field">
 
-            </div>
+<label>Special Quote / Message</label>
 
-            <div class="field">
+<textarea
+name="message"
+placeholder="Write your message here..."></textarea>
 
-                <label>Required Date</label>
+</div>
 
-                <input type="date" id="date" name="date" required>
+<div class="field">
 
-            </div>
+<label>Preferred Colour</label>
 
-            <button type="submit">
+<input type="text"
+name="colour"
+placeholder="Example: Brown, Beige, White">
 
-                Place Your Order
+</div>
 
-            </button>
+<div class="field">
 
-        </form>
+<label>Phone Number</label>
 
-    </div>
-    <script>
-const occasion = document.getElementById("occasion");
-const letterType = document.getElementById("lettertype");
+<input type="tel"
+name="phone"
+pattern="[0-9]{10}"
+placeholder="Enter 10-digit phone number"
+required>
 
-occasion.addEventListener("change", function () {
+</div>
 
-    if (this.value === "Other") {
-        letterType.disabled = false;
-        letterType.required = true;
-        letterType.placeholder = "Enter custom letter type";
-    } else {
-        letterType.disabled = true;
-        letterType.required = false;
-        letterType.value = "";
-        letterType.placeholder = "Available only when Other is selected";
-    }
+<div class="field">
+
+<label>Required Date</label>
+
+<input type="date"
+id="date"
+name="date"
+required>
+
+</div>
+
+<button id="submitBtn" type="submit">
+
+Place Your Order
+
+</button>
+
+</form>
+
+<footer>
+
+Designed & Developed by <strong>Asha</strong><br>
+
+Fullstack Developer • Handmade Letter Artist
+
+</footer>
+
+</div>
+
+<script>
+
+const today=new Date().toISOString().split("T")[0];
+document.getElementById("date").min=today;
+
+const occasion=document.getElementById("occasion");
+const letterType=document.getElementById("lettertype");
+
+occasion.addEventListener("change",function(){
+
+if(this.value==="Other"){
+
+letterType.disabled=false;
+letterType.required=true;
+letterType.placeholder="Enter custom letter type";
+
+}else{
+
+letterType.disabled=true;
+letterType.required=false;
+letterType.value="";
+letterType.placeholder="Available only when Other is selected";
+
+}
 
 });
-const scriptURL =
-"https://script.google.com/macros/s/AKfycbxHdq0gFNEZH6SKCPGBTDTeokpPF0PEvGthAorE7pEP95ESyZCuVIyfxtRtwJJy5Lwi/exec";
 
-const form=document.getElementById("orderForm")
-form.addEventListener("submit", function(e){
+const scriptURL="https://script.google.com/macros/s/AKfycbxHdq0gFNEZH6SKCPGBTDTeokpPF0PEvGthAorE7pEP95ESyZCuVIyfxtRtwJJy5Lwi/exec";
 
-    e.preventDefault();
+const form=document.getElementById("orderForm");
 
-    const formData = {
-        name: this.name.value,
-        email: this.email.value,
-        ordertype: this.ordertype.value,
-        lettertype: this.lettertype.value,
-        message: this.message.value,
-        colour: this.colour.value,
-        phone: this.phone.value,
-        date: this.date.value
-    };
+const submitBtn=document.getElementById("submitBtn");
 
-    fetch(scriptURL,{
-        method:"POST",
-        body: JSON.stringify(formData)
-    })
-    .then(response => response.json())
-    .then(data => {
+form.addEventListener("submit",function(e){
 
-        alert("Order Submitted Successfully!");
+e.preventDefault();
 
-        window.location.href = "page4.html";
+submitBtn.disabled=true;
+submitBtn.innerHTML="Submitting Order...";
 
-    })
-    .catch(error => {
+const formData={
 
-        alert("Error submitting form");
+name:this.name.value,
+email:this.email.value,
+ordertype:this.ordertype.value,
+lettertype:this.lettertype.value,
+message:this.message.value,
+colour:this.colour.value,
+phone:this.phone.value,
+date:this.date.value
 
-        console.error(error);
+};
 
-    });
+fetch(scriptURL,{
+
+method:"POST",
+body:JSON.stringify(formData)
+
+})
+
+.then(res=>res.json())
+
+.then(()=>{
+
+alert("Thank you! Your order has been submitted successfully.");
+
+window.location.href="page4.html";
+
+})
+
+.catch(()=>{
+
+alert("Something went wrong. Please try again.");
+
+})
+
+.finally(()=>{
+
+submitBtn.disabled=false;
+submitBtn.innerHTML="Place Your Order";
 
 });
 
-    </script>
+});
+
+</script>
+
+</body>
+</html>
