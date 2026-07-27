@@ -1,45 +1,323 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>canvas</title>
-        <link rel="icon" href="image/photo_2026-06-07_20-41-39.jpg">
-    <style>
-        h1{
-                    font-style: italic;
-                    color: rgb(53, 1, 1);
-                    
-                    
-                }
-                p{
-                    font-family: 'Times New Roman', Times, serif;
-            
-                    
-                    
-                     
-                }
-                
-                a:hover{
-                    color: white;
+<html lang="en">
 
-                }
-               
-    </style>
-    </head>
-      <body style="
-background:url('image/pice4.jpg');
-background-size:cover;
-background-repeat:no-repeat;
+<head>
 
-background-position:center;
-">
-         <center>
-            <h1>Untill We Meet Again...</h1>
-        <p id="p1" >"Some memories fade, but heartfelt <br> words forever in handwritten letters."</p>
-        <br>
-        <hr>
-        <div>
-            <p><samp>Instagram </samp><a href="https://www.instagram.com/canvas_within?igsh=dm1lbjF2c3I4bmk1">Canvas_Within</a>
-            <samp>|  Phone Number:9363919475</samp></p>
-        </div> 
-    </center>
-    </body>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Canvas Within</title>
+
+<link rel="icon" href="image/photo_2026-06-07_20-41-39.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+font-family:'Poppins',sans-serif;
+
+background:
+linear-gradient(rgba(250,247,242,.82),rgba(250,247,242,.82)),
+url("image/pice4.jpg") center/cover no-repeat fixed;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+min-height:100vh;
+
+padding:30px;
+
+}
+
+.card{
+
+background:white;
+
+max-width:800px;
+
+width:100%;
+
+padding:50px;
+
+border-radius:22px;
+
+box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+text-align:center;
+
+}
+
+h1{
+
+font-family:'Playfair Display',serif;
+
+font-size:50px;
+
+color:#5B2B20;
+
+margin-bottom:20px;
+
+}
+
+.thankyou{
+
+font-size:18px;
+
+line-height:1.9;
+
+color:#5c463f;
+
+margin-bottom:30px;
+
+}
+
+.quote{
+
+font-style:italic;
+
+font-size:18px;
+
+color:#6b4f4f;
+
+margin:35px 0;
+
+padding:20px;
+
+background:#FAF7F2;
+
+border-left:5px solid #5B2B20;
+
+border-radius:12px;
+
+}
+
+.signature{
+
+margin-top:30px;
+
+font-family:'Playfair Display',serif;
+
+font-size:24px;
+
+color:#5B2B20;
+
+}
+
+.contact{
+
+margin-top:45px;
+
+display:flex;
+
+justify-content:center;
+
+gap:25px;
+
+flex-wrap:wrap;
+
+}
+
+.box{
+
+background:#FAF7F2;
+
+padding:20px;
+
+border-radius:15px;
+
+width:250px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.box h3{
+
+color:#5B2B20;
+
+margin-bottom:10px;
+
+font-family:'Playfair Display',serif;
+
+}
+
+.box a{
+
+text-decoration:none;
+
+color:#5B2B20;
+
+font-weight:500;
+
+}
+
+.box a:hover{
+
+color:#8B5E3C;
+
+}
+
+.button-area{
+
+margin-top:40px;
+
+}
+
+button{
+
+background:#5B2B20;
+
+color:white;
+
+padding:15px 35px;
+
+border:none;
+
+border-radius:40px;
+
+font-size:17px;
+
+cursor:pointer;
+
+font-family:'Poppins',sans-serif;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+background:#3d1d15;
+
+transform:translateY(-3px);
+
+}
+
+footer{
+
+margin-top:40px;
+
+font-size:14px;
+
+color:#5B2B20;
+
+}
+
+@media(max-width:600px){
+
+h1{
+
+font-size:36px;
+
+}
+
+.contact{
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
+.box{
+
+width:100%;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>Until We Meet Again...</h1>
+
+<p class="thankyou">
+
+Your order has been received successfully.
+
+Thank you for choosing <strong>Canvas Within</strong>
+</p>
+
+<div class="quote">
+
+"Some memories may fade with time, but heartfelt words written by hand remain timeless treasures."
+
+</div>
+
+<div class="signature">
+
+With Love,<br>
+
+<strong>Asha</strong>
+
+</div>
+
+<div class="contact">
+
+<div class="box">
+
+<h3>Instagram</h3>
+
+<a href="https://www.instagram.com/canvas_within?igsh=dm1lbjF2c3I4bmk1" target="_blank">
+
+@canvas_within
+
+</a>
+
+</div>
+
+<div class="box">
+
+<h3>Phone</h3>
+
+<p>+91 93639 19475</p>
+
+</div>
+
+</div>
+
+<div class="button-area">
+
+<button onclick="location.href='index.html'">
+
+← Back to Home
+
+</button>
+
+</div>
+
+<footer>
+
+© 2026 Canvas Within<br>
+
+Designed & Developed by <strong>Asha</strong><br>
+
+Fullstack Developer • Handmade Letter Artist
+
+</footer>
+
+</div>
+
+</body>
+
+</html>
