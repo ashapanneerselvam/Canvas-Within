@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Order</title>
+    <title>Canvas</title>
 
     <style>
         * {
@@ -173,11 +173,7 @@
         </form>
 
     </div>
-
     <script>
-const dateInput = document.getElementById("date");
-dateInput.min = new Date().toISOString().split("T")[0];
-
 const occasion = document.getElementById("occasion");
 const letterType = document.getElementById("lettertype");
 
@@ -195,72 +191,45 @@ occasion.addEventListener("change", function () {
     }
 
 });
-
 const scriptURL =
 "https://script.google.com/macros/s/AKfycbxHdq0gFNEZH6SKCPGBTDTeokpPF0PEvGthAorE7pEP95ESyZCuVIyfxtRtwJJy5Lwi/exec";
 
-const form = document.getElementById("orderForm");
-
-form.addEventListener("submit", async function (e) {
+const form=document.getElementById("orderForm")
+form.addEventListener("submit", function(e){
 
     e.preventDefault();
 
-    const button = this.querySelector("button");
+    const formData = {
+        name: this.name.value,
+        email: this.email.value,
+        ordertype: this.ordertype.value,
+        lettertype: this.lettertype.value,
+        message: this.message.value,
+        colour: this.colour.value,
+        phone: this.phone.value,
+        date: this.date.value
+    };
 
-    button.disabled = true;
-    button.textContent = "Submitting...";
+    fetch(scriptURL,{
+        method:"POST",
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
 
-    const formData = Object.fromEntries(new FormData(form).entries());
+        alert("Order Submitted Successfully!");
 
-    try {
+        window.location.href = "page4.html";
 
-        const response = await fetch(scriptURL, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(formData)
-        });
+    })
+    .catch(error => {
 
-        const text = await response.text();
+        alert("Error submitting form");
 
-        console.log("Response:", text);
+        console.error(error);
 
-        let result;
-
-        try {
-            result = JSON.parse(text);
-        } catch {
-            throw new Error("Invalid response from Apps Script");
-        }
-
-        if (result.status === "success") {
-
-            alert("Order Submitted Successfully!");
-
-            form.reset();
-
-            window.location.href = "page4.html";
-
-        } else {
-
-            alert(result.message || "Submission Failed");
-
-        }
-
-    } catch (err) {
-
-        console.error(err);
-
-        alert("Network / Server Error\n\n" + err.message);
-
-    }
-
-    button.disabled = false;
-    button.textContent = "Place Your Order";
+    });
 
 });
-</script>
-</body>
 
-</html>
+    </script>
