@@ -1,52 +1,367 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>canvas</title>
-        <link rel="icon" href="image/photo_2026-06-07_20-41-39.jpg">
-        <style>
-        h1{
-                    font-style: italic;
-                    font-size: 100px;
-                    color: rgb(53, 1, 1);
-                    
-                }
-                button{
-    font-size: larger;
-    display: inline-block;
-    width: 300px;
-    height: 40px;
-    cursor:pointer;
-    font-style: italic;
-   background-color:#efe6d7;
-    color:#4a3b2a
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Canvas Within</title>
+
+<link rel="icon" href="image/photo_2026-06-07_20-41-39.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+font-family:'Poppins',sans-serif;
+
+background:url("image/d69e154582edc264973001404d55b468 (1).jpg") center/cover no-repeat fixed;
+
+position:relative;
+
+color:#4a2a20;
 
 }
-button:hover{
-    background-color:white;
-    color:black;
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+inset:0;
+
+background:rgba(250,247,242,.82);
+
+backdrop-filter:blur(2px);
+
+z-index:-1;
+
 }
-             
-        </style>
-    </head>
-     <body style="
-background:url('image/d69e154582edc264973001404d55b468\ \(1\).jpg');
-background-size:cover;
-background-repeat:no-repeat;
-background-position:center;
-">
-        <h1>Vintage Love Letters</h1>
-        <img src="image/photo_2026-06-08_01-51-56.jpg" width="400">
-        <img src="image/photo_2026-06-08_01-51-52.jpg" width="400">
-        <br>
-        <h1>Handwritten Memories</h1>
-        <img src="image/photo_2026-06-08_01-51-43.jpg" width="400">
-        <img src="image/photo_2026-06-08_01-51-33.jpg" width="400">
-        <h1>Custom Creations</h1>
-        <img src="image/photo_2026-06-08_01-51-38.jpg" width="400">
-        <img src="image/photo_2026-06-08_01-51-47.jpg" width="400">
-        <br>
-        <br>
-        <br>
-        <button onclick="location.href='page3.html'">Custom Your Order</button>
-    </body>
+
+.container{
+
+max-width:1200px;
+
+margin:auto;
+
+padding:70px 25px;
+
+}
+
+.page-title{
+
+font-family:'Playfair Display',serif;
+
+font-size:60px;
+
+text-align:center;
+
+color:#5B2B20;
+
+margin-bottom:15px;
+
+}
+
+.subtitle{
+
+text-align:center;
+
+font-size:18px;
+
+max-width:700px;
+
+margin:auto;
+
+line-height:1.8;
+
+margin-bottom:60px;
+
+}
+
+section{
+
+margin-bottom:70px;
+
+}
+
+section h2{
+
+font-family:'Playfair Display',serif;
+
+font-size:40px;
+
+color:#5B2B20;
+
+margin-bottom:10px;
+
+}
+
+.section-text{
+
+margin-bottom:30px;
+
+font-size:17px;
+
+color:#5b463f;
+
+}
+
+.gallery{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+gap:30px;
+
+}
+
+.card{
+
+background:white;
+
+border-radius:20px;
+
+overflow:hidden;
+
+box-shadow:0 12px 30px rgba(0,0,0,.10);
+
+transition:.4s;
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 18px 35px rgba(0,0,0,.18);
+
+}
+
+.card img{
+
+width:100%;
+
+height:420px;
+
+object-fit:cover;
+
+transition:.4s;
+
+}
+
+.card:hover img{
+
+transform:scale(1.05);
+
+}
+
+.card p{
+
+padding:18px;
+
+font-size:16px;
+
+text-align:center;
+
+}
+
+.button-area{
+
+text-align:center;
+
+margin-top:60px;
+
+}
+
+button{
+
+background:#5B2B20;
+
+color:white;
+
+padding:15px 35px;
+
+border:none;
+
+border-radius:40px;
+
+font-size:17px;
+
+cursor:pointer;
+
+font-family:'Poppins',sans-serif;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+background:#3f1d16;
+
+transform:translateY(-4px);
+
+}
+
+footer{
+
+margin-top:80px;
+
+text-align:center;
+
+font-size:15px;
+
+padding-bottom:30px;
+
+color:#5B2B20;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 class="page-title">My Handmade Creations</h1>
+
+<p class="subtitle">
+
+Every creation is thoughtfully handcrafted with care, creativity, and attention to detail. Each piece tells a unique story and is designed to make every special moment unforgettable.
+
+</p>
+
+<section>
+
+<h2>Vintage Love Letters</h2>
+
+<p class="section-text">
+
+Elegant handmade letters inspired by timeless romance and heartfelt emotions.
+
+</p>
+
+<div class="gallery">
+
+<div class="card">
+
+<img src="image/photo_2026-06-08_01-51-56.jpg">
+
+<p>Vintage Love Letter Design</p>
+
+</div>
+
+<div class="card">
+
+<img src="image/photo_2026-06-08_01-51-52.jpg">
+
+<p>Classic Romantic Letter</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Handwritten Memories</h2>
+
+<p class="section-text">
+
+Beautiful keepsakes that preserve meaningful memories through handwritten artistry.
+
+</p>
+
+<div class="gallery">
+
+<div class="card">
+
+<img src="image/photo_2026-06-08_01-51-43.jpg">
+
+<p>Memory Letter Collection</p>
+
+</div>
+
+<div class="card">
+
+<img src="image/photo_2026-06-08_01-51-33.jpg">
+
+<p>Personalized Memory Card</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Custom Creations</h2>
+
+<p class="section-text">
+
+Unique handcrafted designs created especially for your special occasions.
+
+</p>
+
+<div class="gallery">
+
+<div class="card">
+
+<img src="image/photo_2026-06-08_01-51-38.jpg">
+
+<p>Custom Handmade Design</p>
+
+</div>
+
+<div class="card">
+
+<img src="image/photo_2026-06-08_01-51-47.jpg">
+
+<p>Personalized Gift Creation</p>
+
+</div>
+
+</div>
+
+</section>
+
+<div class="button-area">
+
+<button onclick="location.href='page3.html'">
+
+Customize Your Order →
+
+</button>
+
+</div>
+
+<footer>
+
+Designed & Developed by <strong>Asha</strong><br>
+
+Fullstack Developer • Handmade Letter Artist
+
+</footer>
+
+</div>
+
+</body>
 </html>
