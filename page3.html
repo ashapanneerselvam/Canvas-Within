@@ -36,7 +36,7 @@ occasion.onchange=()=>{
  if(occasion.value==='Other'){lt.disabled=false;lt.required=true;lt.placeholder='Enter custom letter type';}
  else{lt.disabled=true;lt.required=false;lt.value='';lt.placeholder='Available only when Other is selected';}
 };
-const scriptURL="https://script.google.com/macros/s/AKfycbyNTF-glMg-5V8qvJ7VWFRJrjAFQ8f_vT2vqYG33rqVrYA4EgR7b7MZYRanrXRkXV8Fog/exec";
+const scriptURL="https://script.google.com/macros/s/AKfycbxHdq0gFNEZH6SKCPGBTDTeokpPF0PEvGthAorE7pEP95ESyZCuVIyfxtRtwJJy5Lwi/exec";
 orderForm.onsubmit=async(e)=>{e.preventDefault();const b=document.querySelector('button');b.disabled=true;b.textContent='Submitting...';
 try{await fetch(scriptURL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.fromEntries(new FormData(orderForm).entries()))});
 alert('Order Submitted Successfully');location.href='page4.html';}catch(e){alert('Error');}b.disabled=false;b.textContent='Place Your Order';}
