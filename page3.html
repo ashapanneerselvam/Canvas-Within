@@ -1,279 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
+<script>
+const dateInput = document.getElementById("date");
+dateInput.min = new Date().toISOString().split("T")[0];
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Order</title>
+const occasion = document.getElementById("occasion");
+const letterType = document.getElementById("lettertype");
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+occasion.addEventListener("change", function () {
 
-        body {
-            margin: 0;
-            font-family: Georgia, serif;
-            background:
-                linear-gradient(rgba(248, 245, 239, .82), rgba(248, 245, 239, .82)),
-                url("image/download.png") center/cover fixed;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
+    if (this.value === "Other") {
+        letterType.disabled = false;
+        letterType.required = true;
+        letterType.placeholder = "Enter custom letter type";
+    } else {
+        letterType.disabled = true;
+        letterType.required = false;
+        letterType.value = "";
+        letterType.placeholder = "Available only when Other is selected";
+    }
 
-        .card {
-            width: 100%;
-            max-width: 700px;
-            background: white;
-            padding: 30px;
-            border-radius: 18px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
-        }
+});
 
-        h1 {
-            text-align: center;
-            color: #4b1f16;
-        }
+const scriptURL =
+"https://script.google.com/macros/s/AKfycbxHdq0gFNEZH6SKCPGBTDTeokpPF0PEvGthAorE7pEP95ESyZCuVIyfxtRtwJJy5Lwi/exec";
 
-        .field {
-            margin: 15px 0;
-        }
+const form = document.getElementById("orderForm");
 
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: bold;
-            color: #4b1f16;
-        }
+form.addEventListener("submit", async function (e) {
 
-        input,
-        select,
-        textarea {
-            width: 100%;
-            padding: 14px;
-            border: 1px solid #c8b9a8;
-            border-radius: 10px;
-            font-size: 16px;
-        }
+    e.preventDefault();
 
-        textarea {
-            height: 120px;
-        }
+    const button = this.querySelector("button");
 
-        button {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 10px;
-            background: #4b1f16;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-        }
+    button.disabled = true;
+    button.textContent = "Submitting...";
 
-        button:hover {
-            background: #6d3728;
-        }
-    </style>
-</head>
+    const formData = Object.fromEntries(new FormData(form).entries());
 
-<body>
+    try {
 
-    <div class="card">
-
-        <h1>Custom Order</h1>
-
-        <form id="orderForm">
-
-            <div class="field">
-                <label>Full Name</label>
-                <input type="text" name="name" required>
-            </div>
-
-            <div class="field">
-                <label>Email</label>
-                <input type="email" name="email" required>
-            </div>
-
-            <div class="field">
-                <label>Occasion</label>
-
-                <select id="occasion" name="ordertype" required>
-
-                    <option value="">Select Occasion</option>
-
-                    <option>Birthday</option>
-
-                    <option>Anniversary</option>
-
-                    <option>Friendship</option>
-
-                    <option>Vintage Love Letter</option>
-
-                    <option value="Other">Other</option>
-
-                </select>
-
-            </div>
-
-            <div class="field">
-
-                <label>Letter Type (Only for Other)</label>
-
-                <input
-                    type="text"
-                    id="lettertype"
-                    name="lettertype"
-                    disabled
-                    placeholder="Available only when Other is selected">
-
-            </div>
-
-            <div class="field">
-
-                <label>Special Quote / Message</label>
-
-                <textarea name="message"></textarea>
-
-            </div>
-
-            <div class="field">
-
-                <label>Preferred Colour</label>
-
-                <input type="text" name="colour">
-
-            </div>
-
-            <div class="field">
-
-                <label>Phone Number</label>
-
-                <input type="tel" name="phone" required>
-
-            </div>
-
-            <div class="field">
-
-                <label>Required Date</label>
-
-                <input type="date" id="date" name="date" required>
-
-            </div>
-
-            <button type="submit">
-
-                Place Your Order
-
-            </button>
-
-        </form>
-
-    </div>
-
-    <script>
-
-        document.getElementById("date").min =
-            new Date().toISOString().split("T")[0];
-
-        const occasion =
-            document.getElementById("occasion");
-
-        const letterType =
-            document.getElementById("lettertype");
-
-        occasion.addEventListener("change", function () {
-
-            if (this.value === "Other") {
-
-                letterType.disabled = false;
-
-                letterType.required = true;
-
-            }
-
-            else {
-
-                letterType.disabled = true;
-
-                letterType.required = false;
-
-                letterType.value = "";
-
-            }
-
+        const response = await fetch(scriptURL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
         });
 
-        const scriptURL =
-            "https://script.google.com/macros/s/AKfycbxHdq0gFNEZH6SKCPGBTDTeokpPF0PEvGthAorE7pEP95ESyZCuVIyfxtRtwJJy5Lwi/exec";
+        const text = await response.text();
 
-        const form =
-            document.getElementById("orderForm");
+        console.log("Response:", text);
 
-        form.addEventListener("submit", async function (e) {
+        let result;
 
-            e.preventDefault();
+        try {
+            result = JSON.parse(text);
+        } catch {
+            throw new Error("Invalid response from Apps Script");
+        }
 
-            const button =
-                this.querySelector("button");
+        if (result.status === "success") {
 
-            button.disabled = true;
+            alert("Order Submitted Successfully!");
 
-            button.textContent = "Submitting...";
+            form.reset();
 
-            const formData =
-                Object.fromEntries(
-                    new FormData(this).entries()
-                );
+            window.location.href = "page4.html";
 
-            try {
+        } else {
 
-    const response = await fetch(scriptURL, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData)
-    });
+            alert(result.message || "Submission Failed");
 
-    console.log("Status :", response.status);
+        }
 
-    const text = await response.text();
+    } catch (err) {
 
-    console.log("Response :", text);
+        console.error(err);
 
-    const result = JSON.parse(text);
-
-    if (result.status === "success") {
-
-        alert("Order Submitted Successfully!");
-
-        window.location.href = "page4.html";
-
-    } else {
-
-        alert(result.message);
+        alert("Network / Server Error\n\n" + err.message);
 
     }
 
-} catch (error) {
+    button.disabled = false;
+    button.textContent = "Place Your Order";
 
-    console.error(error);
-
-    alert("Network / Server Error\n\n" + error);
-
-}
-            button.disabled = false;
-
-            button.textContent = "Place Your Order";
-
-        });
-
-    </script>
-
-</body>
-
-</html>
+});
+</script>
