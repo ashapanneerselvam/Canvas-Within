@@ -3,7 +3,18 @@
     <head>
         <title>canvas</title>
         <link rel="icon" href="image/photo_2026-06-07_20-41-39.jpg">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+    table{
+    width:100%;
+    max-width:1200px;
+    font-size:35px;
+}
+
+td{
+    padding:10px;
+    vertical-align:top;
+}
     h1{
                     font-style: italic;
                     font-size: 80px;
@@ -17,14 +28,15 @@
    
     margin-top: 25px;
     margin-left: 68%;
-    display: inline-block;
-    width: 300px;
-    height: 80px;
+    display:block;
+    width: 250px;
+    height: 60px;
     cursor:pointer;
     font-style: italic;
     background-color:#efe6d7;
     color:#4a3b2a;
-    font-size: 30px;
+    font-size: 24px;
+    margin:30px auto;
 
 }
 button:hover{
@@ -38,7 +50,7 @@ input{
     padding: 30px;
     margin-top: 20px;
     display: inline-block;
-    width: 750px;
+    width: 100%;
     height: 10px;
     cursor:pointer;
     font-style: italic;
@@ -93,7 +105,74 @@ option{
     padding-right: 40px;
 
 }
+        input,select,textarea{
+    width:100%;
+    max-width:750px;
 
+    padding:15px;
+    font-size:25px;
+
+    box-sizing:border-box;
+
+}
+        textarea{
+
+    width:100%;
+
+    max-width:750px;
+
+    height:120px;
+
+    box-sizing:border-box;
+
+}
+        @media (max-width:768px){
+
+h1{
+    font-size:45px;
+}
+
+table{
+    width:100%;
+    font-size:20px;
+}
+
+tr{
+    display:block;
+}
+
+td{
+    display:block;
+    width:100%;
+}
+
+input,
+select,
+textarea{
+
+    width:100%;
+    font-size:20px;
+
+}
+
+button{
+
+    width:100%;
+    max-width:250px;
+
+    margin:20px auto;
+
+}
+
+}
+        form{
+
+max-width:1200px;
+
+margin:auto;
+
+}
+        
 
 
 
