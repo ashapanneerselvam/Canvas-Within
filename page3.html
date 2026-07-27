@@ -1,4 +1,180 @@
-<script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Order</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Georgia, serif;
+            background:
+                linear-gradient(rgba(248, 245, 239, .82), rgba(248, 245, 239, .82)),
+                url("image/download.png") center/cover fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 700px;
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
+        }
+
+        h1 {
+            text-align: center;
+            color: #4b1f16;
+        }
+
+        .field {
+            margin: 15px 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #4b1f16;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #c8b9a8;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 120px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #4b1f16;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #6d3728;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>Custom Order</h1>
+
+        <form id="orderForm">
+
+            <div class="field">
+                <label>Full Name</label>
+                <input type="text" name="name" required>
+            </div>
+
+            <div class="field">
+                <label>Email</label>
+                <input type="email" name="email" required>
+            </div>
+
+            <div class="field">
+                <label>Occasion</label>
+
+                <select id="occasion" name="ordertype" required>
+
+                    <option value="">Select Occasion</option>
+
+                    <option>Birthday</option>
+
+                    <option>Anniversary</option>
+
+                    <option>Friendship</option>
+
+                    <option>Vintage Love Letter</option>
+
+                    <option value="Other">Other</option>
+
+                </select>
+
+            </div>
+
+            <div class="field">
+
+                <label>Letter Type (Only for Other)</label>
+
+                <input
+                    type="text"
+                    id="lettertype"
+                    name="lettertype"
+                    disabled
+                    placeholder="Available only when Other is selected">
+
+            </div>
+
+            <div class="field">
+
+                <label>Special Quote / Message</label>
+
+                <textarea name="message"></textarea>
+
+            </div>
+
+            <div class="field">
+
+                <label>Preferred Colour</label>
+
+                <input type="text" name="colour">
+
+            </div>
+
+            <div class="field">
+
+                <label>Phone Number</label>
+
+                <input type="tel" name="phone" required>
+
+            </div>
+
+            <div class="field">
+
+                <label>Required Date</label>
+
+                <input type="date" id="date" name="date" required>
+
+            </div>
+
+            <button type="submit">
+
+                Place Your Order
+
+            </button>
+
+        </form>
+
+    </div>
+
+    <script>
 const dateInput = document.getElementById("date");
 dateInput.min = new Date().toISOString().split("T")[0];
 
@@ -85,3 +261,6 @@ form.addEventListener("submit", async function (e) {
 
 });
 </script>
+</body>
+
+</html>
