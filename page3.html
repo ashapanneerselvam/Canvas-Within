@@ -231,48 +231,41 @@
 
             try {
 
-                const response =
-                    await fetch(scriptURL, {
+    const response = await fetch(scriptURL, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+    });
 
-                        method: "POST",
+    console.log("Status :", response.status);
 
-                        headers: {
+    const text = await response.text();
 
-                            "Content-Type": "application/json"
+    console.log("Response :", text);
 
-                        },
+    const result = JSON.parse(text);
 
-                        body: JSON.stringify(formData)
+    if (result.status === "success") {
 
-                    });
+        alert("Order Submitted Successfully!");
 
-                const result =
-                    await response.json();
+        window.location.href = "page4.html";
 
-                if (result.status === "success") {
+    } else {
 
-                    alert("Order Submitted Successfully!");
+        alert(result.message);
 
-                    window.location.href = "page4.html";
+    }
 
-                }
+} catch (error) {
 
-                else {
+    console.error(error);
 
-                    alert(result.message);
+    alert("Network / Server Error\n\n" + error);
 
-                }
-
-            }
-
-            catch (error) {
-
-                console.error(error);
-
-                alert("Network / Server Error");
-
-            }
-
+}
             button.disabled = false;
 
             button.textContent = "Place Your Order";
