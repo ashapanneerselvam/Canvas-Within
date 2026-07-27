@@ -1,281 +1,43 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>canvas</title>
-        <link rel="icon" href="image/photo_2026-06-07_20-41-39.jpg">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-    table{
-    width:100%;
-    max-width:1200px;
-    font-size:35px;
-}
-
-td{
-    padding:10px;
-    vertical-align:top;
-}
-    h1{
-                    font-style: italic;
-                    font-size: 80px;
-                    color: rgb(53, 1, 1);
-                }
-                form{
-                    font-style: italic;
-                    color: rgb(53, 1, 1);
-                }
-                button{
-   
-    margin-top: 25px;
-    margin-left: 68%;
-    display:block;
-    width: 250px;
-    height: 60px;
-    cursor:pointer;
-    font-style: italic;
-    background-color:#efe6d7;
-    color:#4a3b2a;
-    font-size: 24px;
-    margin:30px auto;
-
-}
-button:hover{
-    background-color:white;
-    color:black;
-}
-table{
-    font-size: 50px;
-}
-input{
-    padding: 30px;
-    margin-top: 20px;
-    display: inline-block;
-    width: 100%;
-    height: 10px;
-    cursor:pointer;
-    font-style: italic;
-    font-size: 40px;
-    padding-right: 40px;
-    
-    
-
-}
-#id1{
-     
-    width: 220px;
-    margin-left: 52%;
-    margin-top: 15px;
-    cursor:pointer;
-    font-style: italic;
-}
-select{
-    width: 100%;
-    height: 70px;
-    padding: 10px;
-    margin-top: 20px;
-    font-size: 40px;
-    font-style: italic;
-    cursor: pointer;
-    
-    
-    
-}
-
-option{
-    padding: 30px;
-    margin-top: 20px;
-    display: inline-block;
-    width: 750px;
-    height: 10px;
-    cursor:pointer;
-    font-style: italic;
-    font-size: 40px;
-    padding-right: 40px;
-    
-}
-#cl1{
-    padding: 30px;
-    margin-top: 20px;
-    display: inline-block;
-    width: 750px;
-    height: 10px;
-    cursor:pointer;
-    font-style: italic;
-    font-size: 40px;
-    padding-right: 40px;
-
-}
-        input,select,textarea{
-    width:100%;
-    max-width:750px;
-
-    padding:15px;
-    font-size:25px;
-
-    box-sizing:border-box;
-
-}
-        textarea{
-
-    width:100%;
-
-    max-width:750px;
-
-    height:120px;
-
-    box-sizing:border-box;
-
-}
-        @media (max-width:768px){
-
-h1{
-    font-size:45px;
-}
-
-table{
-    width:100%;
-    font-size:20px;
-}
-
-tr{
-    display:block;
-}
-
-td{
-    display:block;
-    width:100%;
-}
-
-input,
-select,
-textarea{
-
-    width:100%;
-    font-size:20px;
-
-}
-
-button{
-
-    width:100%;
-    max-width:250px;
-
-    margin:20px auto;
-
-}
-
-}
-        form{
-
-max-width:1200px;
-
-margin:auto;
-
-}
-        
-
-
-
-</style>
-    </head>
-    <body style="
-background:url('image/download.png');
-background-size: cover;
-background-repeat: no-repeat;
-background-position: center;
-">
-        <center>
-            <h1>Custom Order</h1>
-        <form id="orderForm">
-            <table>
-                <tr>
-                    <td>Full Name</td>
-                    <td><input type="text" name="name" placeholder="Enter your Full Name"></td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td><input type="email" name="email" placeholder="Enter your Email"> </td>
-                </tr>
-                <tr>
-                    <td >Occasion </td>
-                    <td >
-                        <select id="cl2" name="ordertype">
-    <option value="" selected disabled>Select Occasion</option>
-    <option value="birthday">Birthday</option>
-    <option value="anniversary">Anniversary</option>
-    <option value="friendship">Friendship</option>
-    <option value="love">Vintage Love Letter</option>
-    <option value="other">Others</option>
-</select>
-                    </td>
-                    <tr>
-                    <td>Which type of letter you want?</td>
-                    <td><input type="text" name="lettertype" placeholder="Type of Letter"></td>
-                </tr>
-                </tr>
-                <tr>
-                    <td>Special Quote / Message</td>
-                    <td><textarea id="cl1" name="message" placeholder="Enter the message you want to include in the card..." style="height:80px; "id="id1"></textarea></td>
-                </tr>
-                <tr>
-                    <td>Preferred Colour</td>
-                    <td><input type="text" name="colour" placeholder="Colour"></td>
-                </tr>
-                
-                                <tr>
-                    <td>Phone Number</td>
-                    <td><input type="number"name="phone" placeholder="Enter your Phone Number"></td>
-                </tr>
-                <tr>
-                    <td>Required Date</td>
-                    <td><input type="date" name="date"></td>
-            </table>
-            <button type="submit">Place Your Order</button>
-        </form>    
-        </center>
-        <script>
-
-const scriptURL =
-"https://script.google.com/macros/s/AKfycbyNTF-glMg-5V8qvJ7VWFRJrjAFQ8f_vT2vqYG33rqVrYA4EgR7b7MZYRanrXRkXV8Fog/exec";
-
-const form=document.getElementById("orderForm")
-form.addEventListener("submit", function(e){
-
-    e.preventDefault();
-
-    const formData = {
-        name: this.name.value,
-        email: this.email.value,
-        ordertype: this.ordertype.value,
-        lettertype: this.lettertype.value,
-        message: this.message.value,
-        colour: this.colour.value,
-        phone: this.phone.value,
-        date: this.date.value
-    };
-
-    fetch(scriptURL,{
-        method:"POST",
-        body: JSON.stringify(formData)
-    })
-    .then(response => response.json())
-    .then(data => {
-
-        alert("Order Submitted Successfully!");
-
-        window.location.href = "page4.html";
-
-    })
-    .catch(error => {
-
-        alert("Error submitting form");
-
-        console.error(error);
-
-    });
-
-});
-
-</script>
-    </body>
-</html>
+<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>Custom Order</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Georgia,serif;background:
+linear-gradient(rgba(248,245,239,.78),rgba(248,245,239,.78)),
+url('image/download.png') center/cover fixed;
+min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px}
+.card{width:100%;max-width:700px;background:rgba(255,255,255,.9);padding:30px;border-radius:18px;box-shadow:0 15px 35px rgba(0,0,0,.18);backdrop-filter:blur(6px)}
+h1{text-align:center;color:#4b1f16;font-style:italic}
+.field{margin:16px 0}label{display:block;margin-bottom:7px;font-weight:bold;color:#4b1f16}
+input,select,textarea{width:100%;padding:14px;border:1px solid #c8b9a8;border-radius:10px;font-size:16px}
+textarea{height:120px}
+button{width:100%;padding:15px;border:none;border-radius:10px;background:#4b1f16;color:#fff;font-size:18px;cursor:pointer}
+button:hover{background:#6d3728}
+</style></head><body>
+<div class='card'><h1>Custom Order</h1>
+<form id='orderForm'>
+<div class='field'><label>Full Name</label><input required name='name'></div>
+<div class='field'><label>Email</label><input type='email' required name='email'></div>
+<div class='field'><label>Main Occasion</label>
+<select id='occasion' name='ordertype' required>
+<option value=''>Select Occasion</option>
+<option>Birthday</option><option>Anniversary</option><option>Friendship</option><option>Vintage Love Letter</option><option value='Other'>Other</option>
+</select></div>
+<div class='field'><label>Letter Type (Only for Other)</label>
+<input id='lettertype' name='lettertype' placeholder='Enter letter type' disabled></div>
+<div class='field'><label>Special Quote / Message</label><textarea name='message'></textarea></div>
+<div class='field'><label>Preferred Colour</label><input name='colour'></div>
+<div class='field'><label>Phone Number</label><input type='tel' required name='phone'></div>
+<div class='field'><label>Required Date</label><input id='date' type='date' required name='date'></div>
+<button>Place Your Order</button></form></div>
+<script>
+date.min=new Date().toISOString().split('T')[0];
+occasion.onchange=()=>{
+ const lt=document.getElementById('lettertype');
+ if(occasion.value==='Other'){lt.disabled=false;lt.required=true;lt.placeholder='Enter custom letter type';}
+ else{lt.disabled=true;lt.required=false;lt.value='';lt.placeholder='Available only when Other is selected';}
+};
+const scriptURL="https://script.google.com/macros/s/AKfycbyNTF-glMg-5V8qvJ7VWFRJrjAFQ8f_vT2vqYG33rqVrYA4EgR7b7MZYRanrXRkXV8Fog/exec";
+orderForm.onsubmit=async(e)=>{e.preventDefault();const b=document.querySelector('button');b.disabled=true;b.textContent='Submitting...';
+try{await fetch(scriptURL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.fromEntries(new FormData(orderForm).entries()))});
+alert('Order Submitted Successfully');location.href='page4.html';}catch(e){alert('Error');}b.disabled=false;b.textContent='Place Your Order';}
+</script></body></html>
