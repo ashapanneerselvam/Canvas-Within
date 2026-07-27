@@ -1,75 +1,322 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>canvas</title>
-        <link rel="icon" href="image/photo_2026-06-07_20-41-39.jpg">
-        <style>
-                h1{
-                    font-style: italic;
-                    font-size: 100px;
-                    color: rgb(53, 1, 1);
-                }
-                p{
-                    font-family: 'Times New Roman', Times, serif;
-                    font-size: 35px;            
-                }
-                h1{
-                    font-style: italic;
-                    font-size: 100px;
-                    color: rgb(53, 1, 1);
-                }
-                p{
-                    font-family: 'Times New Roman', Times, serif;
-                    font-size: 35px;            
-                }
-                ul{
-                   font-family: 'Times New Roman', Times, serif;
-                    font-size: 35px; 
-                    
+<html lang="en">
+<head>
 
-                }
-    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-button{
-    padding: 10px;
-    margin: 10px;
-    display: inline-block;
-    height: 40px;
-    cursor:pointer;
-    font-style: italic;
-    background-color:#efe6d7;
-    color:rgb(53, 1, 1);
+<title>Canvas Within</title>
+
+<link rel="icon" href="image/photo_2026-06-07_20-41-39.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+font-family:'Poppins',sans-serif;
+
+background:url("image/f5a9b35a0070adb000f0d3b4210077db.jpg") center/cover no-repeat;
+
+min-height:100vh;
+
+position:relative;
+
+color:#4a2a20;
 
 }
+
+body::before{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background:rgba(250,247,242,.80);
+
+backdrop-filter:blur(2px);
+
+}
+
+.container{
+
+position:relative;
+
+z-index:2;
+
+max-width:1100px;
+
+margin:auto;
+
+padding:70px 25px;
+
+}
+
+section{
+
+margin-bottom:70px;
+
+}
+
+h2{
+
+font-family:'Playfair Display',serif;
+
+font-size:48px;
+
+color:#5B2B20;
+
+margin-bottom:18px;
+
+}
+
+p{
+
+font-size:18px;
+
+line-height:1.9;
+
+max-width:800px;
+
+}
+
+.cards{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+margin-top:35px;
+
+}
+
+.card{
+
+background:white;
+
+padding:30px;
+
+border-radius:18px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+transition:.35s;
+
+text-align:center;
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.card h3{
+
+font-family:'Playfair Display',serif;
+
+margin:15px 0;
+
+color:#5B2B20;
+
+}
+
+.card p{
+
+font-size:15px;
+
+line-height:1.7;
+
+}
+
+.icon{
+
+font-size:45px;
+
+}
+
+.button-area{
+
+text-align:center;
+
+margin-top:60px;
+
+}
+
+button{
+
+background:#5B2B20;
+
+color:white;
+
+border:none;
+
+padding:15px 35px;
+
+font-size:17px;
+
+border-radius:40px;
+
+cursor:pointer;
+
+transition:.3s;
+
+font-family:'Poppins',sans-serif;
+
+}
+
 button:hover{
-    background-color:white;
-    color:black;
+
+background:#3d1c14;
+
+transform:translateY(-4px);
+
 }
-button{
-    width:300px;
-    height:45px;
-    font-size: 16px;
+
+footer{
+
+margin-top:80px;
+
+text-align:center;
+
+font-size:15px;
+
+color:#5B2B20;
+
 }
-                    
-        </style>
-    </head>
-    <body style="
-background:url('image/f5a9b35a0070adb000f0d3b4210077db.jpg');
-background-size:cover;
-background-repeat:no-repeat;
-background-position:center;
-">
-        <h1>About Canvas Within</h1>
-        <p>Canvas Within is a handmade creative space where every card is designed with a personal touch.</p>
-        <h1>Why Handmade?</h1>
-        <p>Every piece is created based on the recipient, occasion and story behind the order.</p>
-        <h1>What I Create</h1>
-        <ul>
-            <li>Vintage Love Letters</li>
-            <li>Special Occasion Cards</li>
-            <li>Handmade Gifts</li>
-            <li>Personalized Greeting Cards</li>
-        </ul>
-        <button onclick="location.href='page2.html'">View My Creations</button>
-    </body>
+
+@media(max-width:768px){
+
+h2{
+
+font-size:36px;
+
+}
+
+p{
+
+font-size:16px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<section>
+
+<h2>About Canvas Within</h2>
+
+<p>
+
+Canvas Within is a creative studio where emotions are transformed into timeless handmade letters and personalized keepsakes. Every creation is thoughtfully handcrafted with elegance, creativity, and attention to detail, making every special moment truly unforgettable.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>Why Handmade?</h2>
+
+<p>
+
+Every piece is carefully designed to reflect the recipient's personality, the occasion, and the emotions behind every story. Rather than simply creating a card, I create meaningful keepsakes that preserve memories and celebrate life's most precious moments.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>What I Create</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<div class="icon">❤️</div>
+
+<h3>Vintage Love Letters</h3>
+
+<p>Handcrafted romantic letters inspired by timeless elegance.</p>
+
+</div>
+
+<div class="card">
+
+<div class="icon">🎂</div>
+
+<h3>Birthday Cards</h3>
+
+<p>Personalized birthday keepsakes filled with heartfelt memories.</p>
+
+</div>
+
+<div class="card">
+
+<div class="icon">💌</div>
+
+<h3>Greeting Cards</h3>
+
+<p>Creative handmade cards designed for every meaningful occasion.</p>
+
+</div>
+
+<div class="card">
+
+<div class="icon">🎁</div>
+
+<h3>Handmade Gifts</h3>
+
+<p>Unique handcrafted creations made with love and creativity.</p>
+
+</div>
+
+</div>
+
+</section>
+
+<div class="button-area">
+
+<button onclick="location.href='page2.html'">
+
+View My Creations →
+
+</button>
+
+</div>
+
+<footer>
+
+Designed & Developed by <strong>Asha</strong><br>
+
+  Fullstack Developer • Handmade Letter Artist
+
+</footer>
+
+</div>
+
+</body>
 </html>
